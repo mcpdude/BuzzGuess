@@ -13,7 +13,7 @@ master = 'spark://ip-10-0-0-15.us-west-2.compute.internal:7077'
 if __name__ == "__main__":
 
 
-    conf = SparkConf().setAppName('check it out').setMaster(master)
+    conf = SparkConf().setAppName('check it out')
     sc = SparkContext(conf=conf)
 
     def sentence_split(comment):
@@ -22,7 +22,7 @@ if __name__ == "__main__":
         return len(sentences)
 
 
-    file = sc.textFile(path)
+    file = sc.read.json(path)
 
     comments = file.filter(file.type=='comment')
 
