@@ -16,12 +16,12 @@ if __name__ == "__main__":
 
 
     print(path)
-	file = spark.read.json(path)
+    file = spark.read.json(path)
 
-	comments = file.filter(file.type=='comment')
+    comments = file.filter(file.type=='comment')
 
-	small_comments = comments.select('by', 'text', 'time')
+    small_comments = comments.select('by', 'text', 'time')
 
-	print(en(small_comments.count()))
+    print(en(small_comments.count()))
 
-	spark.stop()
+    spark.stop()
