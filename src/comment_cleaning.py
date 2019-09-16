@@ -21,8 +21,9 @@ if __name__ == "__main__":
 
         return len(sentences)
 
+    spark = sc.SparkContext
 
-    file = sc.read.json(path)
+    file = spark.read.json(path)
 
     comments = file.filter(file.type=='comment')
 
