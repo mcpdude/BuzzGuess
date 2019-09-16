@@ -22,7 +22,7 @@ if __name__ == "__main__":
 
     small_comments = comments.select('by', 'text', 'time')
 
-    with open("text.txt") as f:
+    with open("text.txt", "w") as f:
         f.write(small_comments.count())
 
     spark.stop()
