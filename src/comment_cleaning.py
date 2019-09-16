@@ -39,7 +39,7 @@ if __name__ == "__main__":
 
     small_comments.show()
 
-    sentences = small_comments.select('text'. func.split('value', regex).alias('sentence'))
+    sentences = small_comments.select('text', func.split('value', regex).alias('sentence'))
 
     sentences.printSchema()
 
