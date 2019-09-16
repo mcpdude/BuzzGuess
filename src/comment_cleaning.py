@@ -7,6 +7,7 @@ from datetime import datetime
 from operator import add
 from pyspark import SparkContext, SparkConf
 from pyspark.sql import SparkSession
+import pyspark.sql.functions as func
 
 path  = "hdfs://ip-10-0-0-15.us-west-2.compute.internal:9000/user/HNI_2018-05.json"
 
