@@ -7,4 +7,4 @@ comments = file.filter(file.type=='comment')
 
 small_comments = comments.select('by', 'text', 'time')
 
-return len(small_comments.count())
+print(en(small_comments.count()))
