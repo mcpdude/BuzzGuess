@@ -15,7 +15,7 @@ if __name__ == "__main__":
         .getOrCreate()
 
 
-    print(path)
+    print(path, "\n\n\n\n\n\n\n\n\n\n")
     file = spark.read.json(path)
 
     comments = file.filter(file.type=='comment')
