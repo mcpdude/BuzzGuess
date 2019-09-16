@@ -21,7 +21,7 @@ if __name__ == "__main__":
 
         return len(sentences)
 
-    spark = sc.SparkContext
+    spark = sc.sparkContext
 
     file = spark.read.json(path)
 
