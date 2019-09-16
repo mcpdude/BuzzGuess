@@ -8,6 +8,7 @@ from pyspark.sql import SparkSession
 
 path  = "hdfs://ip-10-0-0-15.us-west-2.compute.internal:9000/user/HNI_2018-05.json"
 
+master = 'spark://ip-10-0-0-15.us-west-2.compute.internal:7077'
 
 if __name__ == "__main__":
 
