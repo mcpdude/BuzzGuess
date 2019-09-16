@@ -11,8 +11,11 @@ if __name__ == "__main__":
 
     spark = SparkSession\
         .builder\
-        .appName("PythonPi")\
+        .appName("test")\
         .getOrCreate()
+
+
+    print(path)
 	file = spark.read.json(path)
 
 	comments = file.filter(file.type=='comment')
