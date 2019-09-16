@@ -12,6 +12,11 @@ master = 'spark://ip-10-0-0-15.us-west-2.compute.internal:7077'
 
 if __name__ == "__main__":
 
+    spark = SparkSession\
+        .builder\
+        .appName("test")\
+        .getOrCreate()
+
     conf = SparkConf().setAppName('check it out').setMaster(master)
     sc = SparkContext(conf=conf)
 
