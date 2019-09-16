@@ -22,6 +22,6 @@ if __name__ == "__main__":
 
     small_comments = comments.select('by', 'text', 'time')
 
-    print(en(small_comments.count()))
+    print(len(small_comments.count()))
 
     spark.stop()
