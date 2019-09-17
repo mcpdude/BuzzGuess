@@ -43,7 +43,7 @@ if __name__ == "__main__":
 
     sentences = small_comments.select('by', 'text', 'time', func.split('text', regex).alias('sentences'))
 
-    real_sentences = sentences.select('by', 'time', sentences.where(func.length(sent)))
+    
 
     sentences.printSchema()
 
