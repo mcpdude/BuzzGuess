@@ -54,7 +54,7 @@ if __name__ == "__main__":
 
     sentences_exploded.show()
 
-    sentences_exploded.coalesce(1).write().csv(write_path + 'hey', mode = 'overwrite', header = 'true')
+    sentences_exploded.coalesce(1).write.csv(write_path + 'hey', mode = 'overwrite', header = 'true')
 
     
 
