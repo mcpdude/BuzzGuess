@@ -52,7 +52,7 @@ if __name__ == "__main__":
 
     sentences_exploded.show()
 
-    sentences_exploded.coalesce(1).write.format('com.databricks.spark.csv').save('path+my.csv',header = 'true')
+    sentences_exploded.write.format('com.databricks.spark.csv').save('path+my.csv',header = 'true')
 
 
 
