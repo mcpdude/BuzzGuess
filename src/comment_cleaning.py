@@ -53,7 +53,7 @@ if __name__ == "__main__":
     sentences_exploded.show()
 
     sentences_exploded.coalesce(1) \
-        .write.mode(SaveMode.Overwrite) \
+        .write.mode('overwrite') \
         .option("mapreduce.fileoutputcommitter.marksuccessfuljobs","false") \
         .option("header","true") \
         .csv('pattttth') 
