@@ -52,6 +52,8 @@ if __name__ == "__main__":
 
     sentences_exploded.show()
 
+    sentences_exploded.coalesce(1).show()
+
     sentences_exploded.coalesce(1) \
         .write.mode('overwrite') \
         .option("mapreduce.fileoutputcommitter.marksuccessfuljobs","false") \
