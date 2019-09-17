@@ -58,7 +58,8 @@ if __name__ == "__main__":
         .write.mode('overwrite') \
         .option("mapreduce.fileoutputcommitter.marksuccessfuljobs","false") \
         .option("header","true") \
-        .csv('pattttth') 
+        .csv('pattttth') \
+        .save("name!")
 
 
 
