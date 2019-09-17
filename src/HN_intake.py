@@ -17,6 +17,10 @@ master = 'spark://ip-10-0-0-15.us-west-2.compute.internal:7077'
 
 regex = "(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s"
 
+user = sys.argv[1]
+
+password = sys.argv[2]
+
 if __name__ == "__main__":
 
     dt = datetime.now()
@@ -55,6 +59,14 @@ if __name__ == "__main__":
     sentences_exploded.printSchema()
 
     sentences_exploded.show()
+
+    jdbcDF.write \
+    .format("jdbc") \
+    .option("url", "test-database.ccarw5e1afmj.us-west-2.rds.amazonaws.com") \
+    .option("dbtable", "schema.sentences_exploded") \
+    .option("user", user) \
+    .option("password", password) \
+    .save()
 
     #sentences_exploded.coalesce(1).write.csv(write_path + 'hey', mode = 'overwrite', header = 'true')
 
