@@ -52,7 +52,7 @@ if __name__ == "__main__":
 
     sentences_exploded.show()
 
-    sentences_exploded.write.save('my_csv', format = 'csv')
+    sentences_exploded.write.save('one more time', format = 'csv', sep=",", inferSchema="true", header="true")
 
 
 
