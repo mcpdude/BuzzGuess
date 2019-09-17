@@ -43,6 +43,8 @@ if __name__ == "__main__":
 
     sentences = small_comments.select('by', 'text', 'time', func.split('text', regex).alias('sentences'))
 
+    real_sentences = sentences.select('by', 'time', sentences.where(func.length(sent)))
+
     sentences.printSchema()
 
     sentences.show()
@@ -54,9 +56,11 @@ if __name__ == "__main__":
 
     sentences_exploded.show()
 
-    sentences_exploded.coalesce(1).write.csv(write_path + 'hey', mode = 'overwrite', header = 'true')
+    #sentences_exploded.coalesce(1).write.csv(write_path + 'hey', mode = 'overwrite', header = 'true')
 
-    
+    real_sentences = sentences_exploded.select('by', 'time', sentences_exploded.where(func.length('sentence') > 5))
+
+    real_sentences.show()
 
 
 
