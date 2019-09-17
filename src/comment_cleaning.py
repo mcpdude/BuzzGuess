@@ -46,7 +46,7 @@ if __name__ == "__main__":
     sentences.show()
 
     sentences_exploded = sentences\
-        .select('sentences', func.explode('text').alias('sentence'))
+        .select('by', func.explode(func.split('text', regex)).alias('sentence'))
 
     sentences_exploded.printSchema()
 
