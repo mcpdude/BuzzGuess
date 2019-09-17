@@ -37,8 +37,9 @@ if __name__ == "__main__":
 
     file = spark.read.json(path)
 
-    file.printSchema()
+    # file.printSchema()
 
+    file.show()
 
 
     # comments = file.filter(file.type=='comment')
