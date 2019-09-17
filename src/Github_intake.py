@@ -39,7 +39,7 @@ if __name__ == "__main__":
 
     # file.printSchema()
 
-    comments = file.filter(file.type=='IssuesEvent')
+    comments = file.filter(file.type=='IssuesCommentEvent')
 
     comments.show()
 
