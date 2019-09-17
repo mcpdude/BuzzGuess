@@ -50,7 +50,7 @@ if __name__ == "__main__":
     sentences.show()
 
     sentences_exploded = sentences\
-        .select('by', 'time', func.explode(func.split('text', regex)).alias('sentence'))
+        .select('by', 'time', func.explode(func.split('text', regex)).alias('sentence')).where(func.length('sentence') > 5)
 
     sentences_exploded.printSchema()
 
@@ -58,9 +58,9 @@ if __name__ == "__main__":
 
     #sentences_exploded.coalesce(1).write.csv(write_path + 'hey', mode = 'overwrite', header = 'true')
 
-    real_sentences = sentences_exploded.select('by', 'time', sentences_exploded.where(func.length('sentence') > 5))
+    # real_sentences = sentences_exploded.select('by', 'time', 'sentences')
 
-    real_sentences.show()
+    # real_sentences.show()
 
 
 
