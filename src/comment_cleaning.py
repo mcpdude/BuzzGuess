@@ -52,6 +52,8 @@ if __name__ == "__main__":
 
     sentences_exploded.show()
 
+    sentences_exploded.write.csv('mycsv.csv')
+
 
 
 
