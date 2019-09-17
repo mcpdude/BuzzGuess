@@ -39,12 +39,17 @@ if __name__ == "__main__":
 
     small_comments.show()
 
-    sentences = small_comments.select('time', func.split('text', regex).alias('sentence'))
+    sentences = small_comments.select('by', 'text', 'time', func.split('text', regex).alias('sentences'))
 
     sentences.printSchema()
 
     sentences.show()
 
+    sentences_exploded = sentences.select('by', 'text', 'time', func.explode('sentences').alias('sentence').where(func.length('sentence') > 5))
+
+    sentences_exploded.printSchema()
+
+    sentences_exploded.show()
 
 
 
