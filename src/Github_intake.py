@@ -39,7 +39,9 @@ if __name__ == "__main__":
 
     # file.printSchema()
 
-    file.show()
+    comments = file.filter(file.type=='IssuesEvent')
+
+    comments.show()
 
 
     # comments = file.filter(file.type=='comment')
