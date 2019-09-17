@@ -52,8 +52,11 @@ if __name__ == "__main__":
 
     sentences_exploded.show()
 
-    sentences_exploded.write.save('one more time', format = 'csv', sep=",", inferSchema="true", header="true")
-
+    sentences_exploded.coalesce(1)
+        .write.mode(SaveMode.Overwrite)
+        .option("mapreduce.fileoutputcommitter.marksuccessfuljobs","false") 
+        .option("header","true")
+        .csv('pattttth')
 
 
 
