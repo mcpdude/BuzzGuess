@@ -37,4 +37,4 @@ if __name__ == '__main__':
 	table = 'stuff'
 
 	my_writer = DataFrameWriter(comments)
-	my_writer.jdbc(url, table, mode)
+	my_writer.jdbc(url, table, mode, props)
