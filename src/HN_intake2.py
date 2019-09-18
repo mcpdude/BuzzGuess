@@ -10,7 +10,7 @@ password = sys.argv[2]
 
 path  = "hdfs://ip-10-0-0-15.us-west-2.compute.internal:9000/user/HNI_2018-05.json"
 regex = "(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s"
-url = 'jdbc:postgresql://10.0.0.25:5432/postgres:5432'
+url = 'jdbc:postgresql://10.0.0.25:5432/postgres'
 mode = 'append'
 props = {"user": user, "password": password}
 
@@ -32,7 +32,7 @@ if __name__ == '__main__':
 	#     .select('by', 'time', func.explode(func.split('text', regex)).alias('sentence')).where(func.length('sentence') > 5)
 	# sentences_exploded.printSchema()
 
-	small_comments.registerTempTable("stuff")
+	# small_comments.registerTempTable("stuff")
 
 	small_comments.printSchema()
 
@@ -40,5 +40,5 @@ if __name__ == '__main__':
 
 	table = 'stuff'
 
-	my_writer = DataFrameWriter(small_comments)
-	my_writer.jdbc(url, table, mode, props)
+	# my_writer = DataFrameWriter(comments)
+	# my_writer.jdbc(url, table, mode, props)
