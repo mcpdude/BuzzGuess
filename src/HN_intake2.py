@@ -41,7 +41,7 @@ if __name__ == '__main__':
 	table = 'stuff'
 
 	small_comments.write.jdbc(
-    url="jdbc:postgresql://localhost:5432/db", 
+    url=url, 
     table="stuff", 
     mode="overwrite", 
     properties={
