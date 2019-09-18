@@ -62,7 +62,7 @@ if __name__ == "__main__":
 
  
 
-    sentences_exploded.write.jdbc(sentences_exploded, url = 'jdbc:postgresql://ip-10-0-0-25.us-west-2.compute.internal:5432/postgres', mode = 'overwrite')
+    sentences_exploded.write.jdbc(url = 'jdbc:postgresql://ip-10-0-0-25.us-west-2.compute.internal:5432/postgres', mode = 'overwrite')
 
     #sentences_exploded.coalesce(1).write.csv(write_path + 'hey', mode = 'overwrite', header = 'true')
 
