@@ -42,7 +42,7 @@ if __name__ == '__main__':
 
 	writer = DataFrameWriter(small_comments)
 
-	writer.jdbc(url)
+	writer.jdbc(url, table)
 
 	# my_writer = DataFrameWriter(comments)
 	# my_writer.jdbc(url, table, mode, props)
