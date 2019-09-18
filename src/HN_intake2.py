@@ -34,6 +34,10 @@ if __name__ == '__main__':
 
 	small_comments.registerTempTable("stuff")
 
+	small_comments.printSchema()
+
+	small_comments.show()
+
 	table = 'stuff'
 
 	my_writer = DataFrameWriter(comments)
