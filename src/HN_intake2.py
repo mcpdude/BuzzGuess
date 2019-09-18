@@ -40,9 +40,16 @@ if __name__ == '__main__':
 
 	table = 'stuff'
 
-	writer = DataFrameWriter(small_comments)
+	small_comments.write.jdbc(
+    url="jdbc:postgresql://localhost:5432/db", 
+    table="stuff", 
+    mode="overwrite", 
+    properties={
+        "user":user, 
+        "password":password, 
+        "driver":"org.postgresql.Driver", 
+        "client_encoding":"utf8"
+   }
+)
 
-	writer.jdbc(url, table, mode, props)
 
-	# my_writer = DataFrameWriter(comments)
-	# my_writer.jdbc(url, table, mode, props)
