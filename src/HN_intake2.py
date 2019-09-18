@@ -38,8 +38,6 @@ if __name__ == '__main__':
 
 	small_comments.show()
 
-	small_comments.createOrReplaceTempView('stuff')
-
 	table = 'stuff'
 
 	my_writer = DataFrameWriter(comments)
