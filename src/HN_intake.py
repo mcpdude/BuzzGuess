@@ -64,7 +64,7 @@ if __name__ == "__main__":
     .format("jdbc") \
     .option("url", "tester.ccarw5e1afmj.us-west-2.rds.amazonaws.com") \
     .option("dbtable", "schema.sentences_exploded") \
-    .option("user", username) \
+    .option("user", user) \
     .option("password", password) \
     .load()
 
