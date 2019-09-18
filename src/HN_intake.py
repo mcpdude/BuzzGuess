@@ -62,13 +62,7 @@ if __name__ == "__main__":
 
  
 
-    sentences_exploded.write \
-    .format("jdbc") \
-    .option("url", "jdbc:postgresql:ip-10-0-0-25.us-west-2.compute.internal:5432") \
-    .option("dbtable", "schema.sentences") \
-    .option("user", user) \
-    .option("password", password) \
-    .save()
+    sentences_exploded.write.jdbc(x, url = 'jdbc:postgresql://ip-10-0-0-25.us-west-2.compute.internal:5432/postgres', mode = 'overwrite')
 
     #sentences_exploded.coalesce(1).write.csv(write_path + 'hey', mode = 'overwrite', header = 'true')
 
