@@ -64,7 +64,7 @@ if __name__ == "__main__":
 
     sentences_exploded.write \
     .format("jdbc") \
-    .option('driver', 'jdbc:postgresql:postgresql-42.2.7') \
+    .option('driver', 'jdbc:postgresql:postgresql-42.2.7.jar') \
     .option("url", "jdbc:postgresql:tester.ccarw5e1afmj.us-west-2.rds.amazonaws.com") \
     .option("dbtable", "schema.sentences") \
     .option("user", user) \
