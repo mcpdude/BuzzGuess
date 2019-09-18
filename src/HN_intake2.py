@@ -1,6 +1,8 @@
 from pyspark import SparkConf, SparkContext
 from pyspark.sql import SQLContext, SparkSession, DataFrameWriter
 
+import psycopg2
+
 import sys
 
 import re as re
