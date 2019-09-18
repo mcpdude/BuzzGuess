@@ -9,6 +9,8 @@ from pyspark import SparkContext, SparkConf
 from pyspark.sql import SparkSession, DataFrameWriter
 import pyspark.sql.functions as func
 
+props = {"user": user, "password": password}
+
 path  = "hdfs://ip-10-0-0-15.us-west-2.compute.internal:9000/user/HNI_2018-05.json"
 
 write_path = "hdfs://ip-10-0-0-15.us-west-2.compute.internal:9000/user/"
@@ -64,7 +66,7 @@ if __name__ == "__main__":
     
  
 
-    sentences_exploded.write.jdbc(url = 'jdbc:postgresql://10.0.0.25:5432/postgres', table = 'stuff', mode = 'overwrite')
+    sentences_exploded.write.jdbc(url = 'jdbc:postgresql://10.0.0.25:5432/postgres', table = 'stuff', mode = 'overwrite', props)
 
     #sentences_exploded.coalesce(1).write.csv(write_path + 'hey', mode = 'overwrite', header = 'true')
 
