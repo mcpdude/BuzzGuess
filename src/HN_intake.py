@@ -64,7 +64,7 @@ if __name__ == "__main__":
 
     sentences_exploded.write \
     .format("jdbc") \
-    .option("url", "jdbc:postgresql:tester.ccarw5e1afmj.us-west-2.rds.amazonaws.com") \
+    .option("url", "jdbc:postgresql:tester.ccarw5e1afmj.us-west-2.rds.amazonaws.com:5432") \
     .option("dbtable", "schema.sentences") \
     .option("user", user) \
     .option("password", password) \
