@@ -22,6 +22,8 @@ if __name__ == '__main__':
 	conf.setAppName('CopyChat')
 	conf.set('spark.master', 'spark://localhost:7077')
 
+	spark = SparkContext
+
 	file = spark.read.json(path)
 	comments = file.filter(file.type=='comment')
 	small_comments = comments.select('by', 'text', 'time')
