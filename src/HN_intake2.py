@@ -47,8 +47,7 @@ if __name__ == '__main__':
     properties={
         "user":user, 
         "password":password, 
-        "driver":"org.postgresql.Driver", 
-        "client_encoding":"utf8"
+        "driver":"org.postgresql.Driver"
    }
 )
 
