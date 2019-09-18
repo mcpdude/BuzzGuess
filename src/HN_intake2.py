@@ -23,16 +23,16 @@ if __name__ == '__main__':
 	conf.set('spark.master', 'spark://localhost:7077')
 
 	file = spark.read.json(path)
-    comments = file.filter(file.type=='comment')
-    small_comments = comments.select('by', 'text', 'time')
-    # sentences = small_comments.select('by', 'text', 'time', func.split('text', regex).alias('sentences'))
-    # sentences_exploded = sentences\
-    #     .select('by', 'time', func.explode(func.split('text', regex)).alias('sentence')).where(func.length('sentence') > 5)
-    # sentences_exploded.printSchema()
+	comments = file.filter(file.type=='comment')
+	small_comments = comments.select('by', 'text', 'time')
+	# sentences = small_comments.select('by', 'text', 'time', func.split('text', regex).alias('sentences'))
+	# sentences_exploded = sentences\
+	#     .select('by', 'time', func.explode(func.split('text', regex)).alias('sentence')).where(func.length('sentence') > 5)
+	# sentences_exploded.printSchema()
 
-    small_comments.registerTempTable("stuff")
+	small_comments.registerTempTable("stuff")
 
-    table = 'stuff'
+	table = 'stuff'
 
-    my_writer = DataFrameWriter(comments)
-    my_writer.jdbc(url, table, mode, props)
+	my_writer = DataFrameWriter(comments)
+	my_writer.jdbc(url, table, mode, props)
