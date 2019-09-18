@@ -60,9 +60,17 @@ if __name__ == "__main__":
 
     sentences_exploded.show()
 
+    jdbcDF = spark.read \
+    .format("jdbc") \
+    .option("url", "tester.ccarw5e1afmj.us-west-2.rds.amazonaws.com") \
+    .option("dbtable", "schema.sentences_exploded") \
+    .option("user", username) \
+    .option("password", password) \
+    .load()
+
     jdbcDF.write \
     .format("jdbc") \
-    .option("url", "test-database.ccarw5e1afmj.us-west-2.rds.amazonaws.com") \
+    .option("url", "tester.ccarw5e1afmj.us-west-2.rds.amazonaws.com") \
     .option("dbtable", "schema.sentences_exploded") \
     .option("user", user) \
     .option("password", password) \
