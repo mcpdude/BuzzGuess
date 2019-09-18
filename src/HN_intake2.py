@@ -40,7 +40,7 @@ if __name__ == '__main__':
 
 	small_comments.createOrReplaceTempView('stuff')
 
-	table = 'postgres.stuff'
+	table = 'stuff'
 
 	my_writer = DataFrameWriter(comments)
 	my_writer.jdbc(url, table, mode, props)
