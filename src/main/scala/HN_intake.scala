@@ -28,10 +28,10 @@ object HN_intake {
     sentences.printSchema()
     val nice = sentences.withColumn("clean_sentences", regexp_replace(sentences("sentence"), "\u0000", "0"))
     val nice1 = nice.withColumn("clean_sentences", regexp_replace(nice("clean_sentences"), "\\x00", "0"))
-    val nice2 = nice1.withColumn("clean_sentences", regexp_replace(nice1("clean_sentences"), "\\\\0x00", "0"))
+    // val nice2 = nice1.withColumn("clean_sentences", regexp_replace(nice1("clean_sentences"), "\\\\0x00", "0"))
     // val nice3 = nice2.withColumn("clean_sentences", regexp_replace(nice2("clean_sentences"), "0x00", "0"))
     // nice3.printSchema()
-    val nice5 = nice2.drop("text").drop("sentence")
+    val nice5 = nice1.drop("text").drop("sentence")
     nice5.printSchema()
     println("it's working!")
 
@@ -40,7 +40,12 @@ object HN_intake {
 
     val with_hash = mh.fit(nice5)
 
+
+    println("\n\n\n\n\n\n\n\n\n\nhere!")
     with_hash.transform(nice5).show()
+    println("\n\n\n\n\n\n\n\n\n\nhere!")
+
+
 
     // sentences.write.format("jdbc").option("url", url).option("dbtable", "sentences").option("user", "postgres").mode("overwrite").option("driver", "org.postgresql.Driver").option("password", "L0ngfins").save()
     nice5.write.format("jdbc").option("url", url).option("dbtable", "nice").option("user", "postgres").mode("overwrite").option("driver", "org.postgresql.Driver").option("password", "L0ngfins").save()
