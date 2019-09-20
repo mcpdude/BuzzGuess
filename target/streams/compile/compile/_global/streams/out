@@ -1,0 +1,4 @@
+[0m[[0m[31merror[0m] [0m[0m/Users/brianposey/CopyChat/src/main/scala/HN_intake.scala:32:18: not found: type MinHashLSH[0m
+[0m[[0m[31merror[0m] [0m[0m    val mh = new MinHashLSH().setNumHashTables(5).setInputCol("clean_sentences").setOututCol("sent _hash")[0m
+[0m[[0m[31merror[0m] [0m[0m                 ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

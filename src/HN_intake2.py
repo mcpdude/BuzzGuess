@@ -1,8 +1,6 @@
 from pyspark import SparkConf, SparkContext
 from pyspark.sql import SQLContext, SparkSession, DataFrameWriter
 
-import psycopg2
-
 import sys
 
 import re as re
@@ -12,7 +10,7 @@ password = sys.argv[2]
 
 path  = "hdfs://ip-10-0-0-15.us-west-2.compute.internal:9000/user/HNI_2018-05.json"
 regex = "(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s"
-url = 'jdbc:postgresql://10.0.0.25:5432/postgres'
+url = '	'
 mode = 'append'
 props = {"user": user, "password": password}
 
@@ -42,15 +40,8 @@ if __name__ == '__main__':
 
 	table = 'stuff'
 
-	small_comments.write.jdbc(
-    url=url, 
-    table="stuff", 
-    mode="overwrite", 
-    properties={
-        "user":user, 
-        "password":password, 
-        "driver":"org.postgresql.Driver"
-   }
-)
+	writer = DataFrameWriter(small_comments)
+
+	writer.jdbc(url, table, mode, props)
 
 
