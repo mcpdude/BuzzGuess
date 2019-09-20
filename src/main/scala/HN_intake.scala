@@ -23,9 +23,9 @@ object HN_intake {
     val nice = sentences.withColumn("clean_sentences", regexp_replace(sentences("sentence"), "\u0000", "0"))
     val nice1 = nice.withColumn("clean_sentences", regexp_replace(nice("clean_sentences"), "\\x00", "0"))
     val nice2 = nice1.withColumn("clean_sentences", regexp_replace(nice1("clean_sentences"), "\\\\0x00", "0"))
-    val nice3 = nice2.withColumn("clean_sentences", regexp_replace(nice2("clean_sentences"), "0x00", "0"))
+    // val nice3 = nice2.withColumn("clean_sentences", regexp_replace(nice2("clean_sentences"), "0x00", "0"))
     nice3.printSchema()
-    val nice5 = nice3.drop("text").drop("sentence")
+    val nice5 = nice2.drop("text").drop("sentence")
     nice5.printSchema()
     println("it's working!")
 
