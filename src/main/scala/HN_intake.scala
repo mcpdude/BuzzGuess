@@ -39,13 +39,13 @@ object HN_intake {
     val mh = new MinHashLSH().setNumHashTables(5).setInputCol("clean_sentences").setOutputCol("sent _hash")
 
     val with_hash = mh.fit(nice5)
-
+    nice5.printSchema()
 
     println("\n\n\n\n\n\n\n\n\n\nhere!")
     with_hash.transform(nice5).show()
     println("\n\n\n\n\n\n\n\n\n\nhere!")
 
-
+    nice5.printSchema()
 
     // sentences.write.format("jdbc").option("url", url).option("dbtable", "sentences").option("user", "postgres").mode("overwrite").option("driver", "org.postgresql.Driver").option("password", "L0ngfins").save()
     nice5.write.format("jdbc").option("url", url).option("dbtable", "nice").option("user", "postgres").mode("overwrite").option("driver", "org.postgresql.Driver").option("password", "L0ngfins").save()
