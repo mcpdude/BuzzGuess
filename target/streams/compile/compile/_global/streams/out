@@ -1,8 +1,6 @@
-[0m[[0m[31merror[0m] [0m[0m/Users/brianposey/CopyChat/src/main/scala/HN_intake.scala:34:17: not found: value nice2[0m
-[0m[[0m[31merror[0m] [0m[0m    val nice5 = nice2.drop("text").drop("sentence")[0m
-[0m[[0m[31merror[0m] [0m[0m                ^[0m
-[0m[[0m[31merror[0m] [0m[0m/Users/brianposey/CopyChat/src/main/scala/HN_intake.scala:48:38: not enough arguments for method save: (path: String)Unit.[0m
-[0m[[0m[31merror[0m] [0m[0mUnspecified value parameter path.[0m
-[0m[[0m[31merror[0m] [0m[0m    val df_with_hash = with_hash.save()[0m
-[0m[[0m[31merror[0m] [0m[0m                                     ^[0m
-[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/brianposey/CopyChat/src/main/scala/HN_intake.scala:56:28: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : org.apache.spark.ml.feature.CountVectorizerModel[0m
+[0m[[0m[31merror[0m] [0m[0m required: org.apache.spark.sql.Dataset[_][0m
+[0m[[0m[31merror[0m] [0m[0m    val with_hash = mh.fit(cvModel)[0m
+[0m[[0m[31merror[0m] [0m[0m                           ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
