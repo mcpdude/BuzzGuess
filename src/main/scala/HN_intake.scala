@@ -51,6 +51,10 @@ object HN_intake {
 
   	cvModel.transform(words_alone).show(true)
 
+  	words_alone.printSchema()
+  	words_alone.collect()
+  	words_alone.printSchema()
+
     val mh = new MinHashLSH().setNumHashTables(5).setInputCol("features").setOutputCol("sent_hash")
 
     val with_hash = mh.fit(words_alone)
