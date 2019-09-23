@@ -14,7 +14,7 @@ object HN_intake {
 
   def main(args: Array[String]) {
   	val url = "jdbc:postgresql://10.0.0.25:5432/postgres"
-  	val path = "hdfs://ip-10-0-0-15.us-west-2.compute.internal:9000/hn/"
+  	val path = "s3://test-insight-data-pipes/hacker_news/"
 
   	val tokenizer = new Tokenizer().setInputCol("clean_sentences").setOutputCol("words")
 
