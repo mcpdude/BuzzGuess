@@ -40,15 +40,15 @@ object stack_intake {
 
   		val stack_posts = spark.read.format("com.databricks.spark.xml").option("rowTag", "comments").load(posts_path)
 
-  		val xml_rip = stack_posts.selectExpr("explode(row) as row")
+  		val dos_xml_rip = stack_posts.selectExpr("explode(row) as row")
 
-  		val xml_rip2 = xml_rip.select("row.*", "*")
+  		val dos_xml_rip2 = xml_rip.select("row.*", "*")
 
-  		val xml_rip3 = xml_rip2.drop($"row")
+  		val dos_xml_rip3 = xml_rip2.drop($"row")
 
-  		val xml_rip4 = xml_rip3.drop("_UserDisplayName", "_VALUE", "_Score")
+  		val dos_xml_rip4 = xml_rip3.drop("_UserDisplayName", "_VALUE", "_Score")
 
-  		val sentences = xml_rip4.select($"_UserId", $"_CreationDate", $"_Id", explode(split($"_Text", regex)).as("sentence"))
+  		val dos_sentences = xml_rip4.select($"_UserId", $"_CreationDate", $"_Id", explode(split($"_Text", regex)).as("sentence"))
 
   		sentences.write
   		.format("jdbc")
