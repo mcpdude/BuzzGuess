@@ -7,7 +7,7 @@ object stack_intake {
 
 	def main(args: Array[String]) {
 		val url = "jdbc:postgresql://10.0.0.25:5432/postgres"
-		val comment_path = "s3a://test-insight-data-pipes/stack/Comment.xml"
+		val comment_path = "s3a://test-insight-data-pipes/stack/Comments.xml"
 		val posts_path = "s3a://test-insight-data-pipes/stack/Posts.xml"
 
 		val regex = "(?<!\\w\\.\\w.)(?<![A-Z][a-z]\\.)(?<=\\.|\\?)\\s"
