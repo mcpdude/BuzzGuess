@@ -11,3 +11,4 @@ libraryDependencies ++= Seq(
 )
 
 libraryDependencies += "org.apache.spark" %% "spark-mllib" % "2.4.0"
+libraryDependencies += "com.databricks" %% "spark-xml" % "0.2.0"
