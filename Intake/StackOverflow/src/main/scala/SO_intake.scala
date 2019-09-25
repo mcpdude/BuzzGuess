@@ -6,7 +6,7 @@ import org.apache.spark.sql.functions._
 object stack_intake {
 
 	def main(args: Array[String]) {
-		val url = "jdbc:postgresql://10.0.0.25:5432/postgres"
+		val url = "jdbc:postgresql://10.0.0.27:5432/postgres"
 		val comment_path = "s3a://test-insight-data-pipes/stack/Comments.xml"
 		val posts_path = "s3a://test-insight-data-pipes/stack/Posts.xml"
 
@@ -38,19 +38,19 @@ object stack_intake {
   		.mode("overwrite")
   		.save()
 
-  		val stack_posts = spark.read.format("com.databricks.spark.xml").option("rowTag", "comments").load(posts_path)
+  		val stack_posts = spark.read.format("com.databricks.spark.xml").option("rowTag", "posts").load(posts_path)
 
   		val dos_xml_rip = stack_posts.selectExpr("explode(row) as row")
 
-  		val dos_xml_rip2 = xml_rip.select("row.*", "*")
+  		val dos_xml_rip2 = dos_xml_rip.select("row.*", "*")
 
-  		val dos_xml_rip3 = xml_rip2.drop($"row")
+  		val dos_xml_rip3 = dos_xml_rip2.drop($"row")
 
-  		val dos_xml_rip4 = xml_rip3.drop("_UserDisplayName", "_VALUE", "_Score")
+  		val dos_xml_rip4 = dos_xml_rip3.drop("_UserDisplayName", "_VALUE", "_Score")
 
-  		val dos_sentences = xml_rip4.select($"_UserId", $"_CreationDate", $"_Id", explode(split($"_Text", regex)).as("sentence"))
+  		val dos_sentences = dos_xml_rip4.select($"_OwnerUserId", $"_CreationDate", $"_Id", explode(split($"_Text", regex)).as("sentence"))
 
-  		sentences.write
+  		dos_sentences.write
   		.format("jdbc")
   		.option("url", url)
   		.option("dbtable", "stack")
