@@ -42,11 +42,6 @@ object HN_intake {
     val nice1 = nice.withColumn("clean_sentences", regexp_replace(nice("clean_sentences"), "\\x00", "0"))
     val nice5 = nice1.drop("text").drop("sentence")
 
-    // Celebratory debug message! 
-    nice5.printSchema()
-    println("it's working!")
-
-
 
     val words =  nice5.select($"by", $"time", $"id", split($"clean_sentences", " ").as("words"))
     val words_alone = words.drop("clean_sentences")
@@ -75,7 +70,7 @@ object HN_intake {
     // sentences.write.format("jdbc").option("url", url).option("dbtable", "sentences").option("user", "postgres").mode("overwrite").option("driver", "org.postgresql.Driver").option("password", "L0ngfins").save()
     words_alone.write.format("jdbc")
     .option("url", url)
-    .option("dbtable", "yay")
+    .option("dbtable", "hacker_news")
     .option("user", "postgres")
     .mode("overwrite")
     .option("driver", "org.postgresql.Driver")
