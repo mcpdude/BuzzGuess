@@ -26,9 +26,13 @@ object stack_intake {
   		val xml_rip4 = xml_rip3.drop("_UserDisplayName", "_VALUE", "_Score")
 
 
-  		val sentences = xml_rip4.select($"_UserId", $"_CreationDate", $"_Id", explode(split($"_Text", regex)).as("sentence"))
+  		val sentences = xml_rip4.select($"_UserId" as "by", $"_CreationDate" as "time", $"_Id" as "id", explode(split($"_Text", regex)).as("sentence"))
 
-  		sentences.write
+  		val words = sentences.select($"by", $"time", $"id", split($"sentences", " ").as("words")))
+
+		words.drop($"sentences")
+
+  		words.write
   		.format("jdbc")
   		.option("url", url)
   		.option("dbtable", "stack")
@@ -48,9 +52,11 @@ object stack_intake {
 
   		val dos_xml_rip4 = dos_xml_rip3.drop("_UserDisplayName", "_VALUE", "_Score")
 
-  		val dos_sentences = dos_xml_rip4.select($"_OwnerUserId" as "_UserID", $"_CreationDate", $"_Id", explode(split($"_Body", regex)).as("sentence"))
+  		val dos_sentences = dos_xml_rip4.select($"_OwnerUserId" as "by", $"_CreationDate" as "time", $"_Id" as "id", explode(split($"_Body", regex)).as("sentence"))
 
-  		dos_sentences.write
+  		val dos_words = sentences.select($"by", $"time", $"id", split($"sentences", " ").as("words")))
+
+  		dos_words.write
   		.format("jdbc")
   		.option("url", url)
   		.option("dbtable", "stack")
