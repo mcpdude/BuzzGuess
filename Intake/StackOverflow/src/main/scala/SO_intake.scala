@@ -24,15 +24,15 @@ object stack_intake {
   		val xml_rip3 = xml_rip2.drop($"row")
 
   		val xml_rip4 = xml_rip3.drop("_UserDisplayName", "_VALUE", "_Score")
-
+		xml_rip4.printSchema()
 
   		val sentences = xml_rip4.select($"_UserId" as "by", $"_CreationDate" as "time", $"_Id" as "id", explode(split($"_Text", regex)).as("sentence"))
 
   		val words = sentences.select($"by", $"time", $"id", split($"sentences", " ").as("words"))
+		
+		val words_alone = words.drop($"sentences")
 
-		words.drop($"sentences")
-
-  		words.write
+  		words_alone.write
   		.format("jdbc")
   		.option("url", url)
   		.option("dbtable", "stack")
@@ -54,9 +54,11 @@ object stack_intake {
 
   		val dos_sentences = dos_xml_rip4.select($"_OwnerUserId" as "by", $"_CreationDate" as "time", $"_Id" as "id", explode(split($"_Body", regex)).as("sentence"))
 
-  		val dos_words = dos_sentences.select($"by", $"time", $"id", split($"sentences", " ").as("words"))
+  		val dos_words = dos_sentences.select($"by", $"time", $"id", split($"sentence", " ").as("words"))
 
-  		dos_words.write
+		val dos_words_alone = dos_words.drop($"sentence")
+
+  		dos_words_alone.write
   		.format("jdbc")
   		.option("url", url)
   		.option("dbtable", "stack")
