@@ -46,26 +46,6 @@ object HN_intake {
     val words =  nice5.select($"by", $"time", $"id", split($"clean_sentences", " ").as("words"))
     val words_alone = words.drop("clean_sentences")
 
-    words_alone.printSchema()
-
-    val cvModel: CountVectorizerModel = new CountVectorizer()
-  	.setInputCol("words")
-  	.setOutputCol("features")
-  	.setVocabSize(3000)
-  	.setMinDF(2)
-  	.fit(words_alone)
-
-  	val hashable = cvModel.transform(words_alone)
-
-    val mh = new MinHashLSH().setNumHashTables(5).setInputCol("features").setOutputCol("sent_hash")
-
-    val hashed = mh.fit(hashable)
-    
-
-    println("\n\n\n\n\n\n\n\n\n\nhere!")
-    val finale = hashed.transform(hashable)
-    println("\n\n\n\n\n\n\n\n\n\nhere!")
-
 
     // sentences.write.format("jdbc").option("url", url).option("dbtable", "sentences").option("user", "postgres").mode("overwrite").option("driver", "org.postgresql.Driver").option("password", "L0ngfins").save()
     words_alone.write.format("jdbc")
