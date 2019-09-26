@@ -48,7 +48,7 @@ object stack_intake {
 
   		val dos_xml_rip4 = dos_xml_rip3.drop("_UserDisplayName", "_VALUE", "_Score")
 
-  		val dos_sentences = dos_xml_rip4.select($"_OwnerUserId", $"_CreationDate", $"_Id", explode(split($"_Text", regex)).as("sentence"))
+  		val dos_sentences = dos_xml_rip4.select($"_OwnerUserId" as "_UserID", $"_CreationDate", $"_Id", explode(split($"_Body", regex)).as("sentence"))
 
   		dos_sentences.write
   		.format("jdbc")
